@@ -481,7 +481,8 @@ def app_save_skill(
         fm.pop("disable-model-invocation", None)
 
     new_content = _dump_skill_md(fm, body)
-    target.write_text(new_content, encoding="utf-8")
+    with target.open("w", encoding="utf-8", newline="\n") as fh:
+        fh.write(new_content)
     return CallToolResult(
         content=[TextContent(type="text", text=f"Saved {fm['name']}")],
         structured_content={"ok": True, "skillPath": str(target.resolve()), "name": fm["name"]},
@@ -510,7 +511,8 @@ def app_toggle_skill(skill_path: str, disabled: bool, workspace_dir: str = "") -
         fm["disable-model-invocation"] = True
     else:
         fm.pop("disable-model-invocation", None)
-    target.write_text(_dump_skill_md(fm, body), encoding="utf-8")
+    with target.open("w", encoding="utf-8", newline="\n") as fh:
+        fh.write(_dump_skill_md(fm, body))
     return CallToolResult(
         content=[TextContent(type="text", text=f"Updated {fm['name']} disabled={disabled}")],
         structured_content={"ok": True, "disabled": disabled},
@@ -560,7 +562,8 @@ def app_create_skill(
     skill_md = skill_dir / "SKILL.md"
     fm = {"name": clean_name, "description": description.strip()}
     content = _dump_skill_md(fm, body or f"# {clean_name}\n\n在此编写该 Skill 的执行步骤与注意事项。")
-    skill_md.write_text(content, encoding="utf-8")
+    with skill_md.open("w", encoding="utf-8", newline="\n") as fh:
+        fh.write(content)
     return CallToolResult(
         content=[TextContent(type="text", text=f"Created {clean_name}")],
         structured_content={"ok": True, "skillPath": str(skill_md.resolve()), "name": clean_name},
@@ -617,6 +620,11 @@ def app_import_skill(source_dir: str) -> CallToolResult:
             is_error=True,
         )
     shutil.copytree(src, dest, symlinks=False)
+    dest_skill_md = dest / "SKILL.md"
+    if dest_skill_md.is_file():
+        raw = dest_skill_md.read_text(encoding="utf-8", errors="replace").replace("\r\n", "\n")
+        with dest_skill_md.open("w", encoding="utf-8", newline="\n") as fh:
+            fh.write(raw)
     return CallToolResult(
         content=[TextContent(type="text", text=f"Imported {src.name} to Antigravity global skills")],
         structured_content={"ok": True, "skillPath": str((dest / "SKILL.md").resolve()), "name": src.name},

@@ -1,8 +1,38 @@
-# Antigravity Skill Explorer
+<p align="center">
+  <img src="docs/screenshots/01-hero-banner.png" alt="Antigravity Skill Explorer 功能总览" width="100%" />
+</p>
 
-专为 **Google Antigravity** 构建的可视化 Skill 浏览器与一键调用中心插件（基于 MCP App / SEP-1865）。
+<h1 align="center">Antigravity Skill Explorer</h1>
 
-## 功能特性
+<p align="center">
+  <strong>专为 Google Antigravity 构建的可视化 Skill 浏览器与一键调用中心插件（MCP App · SEP-1865）</strong>
+</p>
+
+---
+
+## 界面与功能预览
+
+### 1. 全页双栏视图（浅色主题 · 分类浏览 / 详情预览 / 快捷调用）
+
+按来源自动分组扫描本地全部 Skills（Antigravity 全局、当前工作区、已安装插件、外部可导入与内置技能），右侧可直接输入具体任务并一键向当前对话发送调用指令或附加为下条消息上下文：
+
+![全页双栏视图与快捷调用](docs/screenshots/02-overview-light.png)
+
+### 2. 深色主题自适应与在线编辑 `SKILL.md`
+
+自动跟随 Antigravity 的明暗主题与样式变量；对全局或工作区可写 Skill 支持直接在线修改 `description`、启停模型自动调用（`disable-model-invocation`）以及编辑 Markdown 正文，删除时安全移入 `.trash` 回收站：
+
+![深色主题与在线编辑 SKILL.md](docs/screenshots/03-dark-editor.png)
+
+### 3. 侧栏窄屏模式、上下文附加与跨工具一键导入
+
+在 Antigravity 右侧辅助栏打开时自动切换为紧凑窄屏布局，支持一键调用与 `📎 附加到下条消息`；同时自动扫描本机 `~/.agents/skills` 与 `~/.dsh/skills`，点击 **⬇ 导入** 即可一键复制到 Antigravity 全局目录，也支持通过表单可视化新建 Skill：
+
+![侧栏窄屏模式、外部导入与新建 Skill](docs/screenshots/04-sidepane-and-import.png)
+
+---
+
+## 核心特性
 
 - **双入口原生集成**：支持从 Antigravity **右侧辅助栏 `+` 菜单**（侧栏模式）和 **左侧全局导航栏**（全页双栏模式）打开，也可在对话里直接说“打开 Skill Explorer”。
 - **按来源分类浏览**：自动扫描并分类展示：
@@ -18,6 +48,8 @@
   - 支持对全局/工作区 Skill 在线新建、编辑 `SKILL.md`、启停 `disable-model-invocation`、安全移入 `.trash` 回收站，以及在侧栏打开源文件。
   - 支持将 `~/.agents/skills` 或 `~/.dsh/skills` 中的 Skill 一键导入到 Antigravity 全局目录。
 - **零前端构建依赖**：仓库已内置打包好的单文件 [ui/app.html](ui/app.html)，安装时只需要 Python 3.10+（或 `uv`）。
+
+---
 
 ## 一键安装
 
@@ -63,6 +95,7 @@ antigravity-skill-explorer/
 ├── server.py                      # Python MCP App 服务端
 ├── requirements.txt               # Python 依赖
 ├── assets/logo.svg                # 插件图标
+├── docs/screenshots/              # 界面与功能预览截图
 ├── skills/skill-explorer/SKILL.md # 配套触发 Skill
 ├── ui/
 │   ├── app.html                   # 预编译单文件 HTML（含 @modelcontextprotocol/ext-apps）

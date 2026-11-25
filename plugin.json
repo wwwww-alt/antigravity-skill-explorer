@@ -1,0 +1,12 @@
+{
+  "name": "skill-explorer",
+  "displayName": "Skill Explorer",
+  "version": "1.0.0",
+  "description": "可视化 Skill 浏览器与一键调用中心：按来源分类浏览 Antigravity 全局、工作区、插件、内置及外部（.agents / .dsh）Skills，支持搜索、查看/编辑 SKILL.md、一键导入以及直接向当前对话发送或附加 Skill 调用。",
+  "logo": "assets/logo.svg",
+  "suggestedPrompts": [
+    "打开 Skill Explorer 面板查看所有可用的 Skill",
+    "在 Skill Explorer 中搜索 agent-reach 并预览它的用法",
+    "打开 Skill Explorer 查看有哪些来自 DSH 或 .agents 的 Skill 可以导入到 Antigravity"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "explorer": {
+      "command": "/ABSOLUTE/PATH/TO/.gemini/config/plugins/skill-explorer/.venv/Scripts/python.exe",
+      "args": [
+        "/ABSOLUTE/PATH/TO/.gemini/config/plugins/skill-explorer/server.py"
+      ]
+    }
+  }
+}

@@ -8,6 +8,8 @@
   <strong>专为 Google Antigravity 构建的可视化 Skill 浏览器与一键调用中心插件（MCP App · SEP-1865）</strong>
 </p>
 
+> **参考与致谢声明**：本插件的功能构想与交互体验参考了 DeepSeek Harness (DSH) 生态中的优秀项目 [dsh-skill-explorer](https://github.com/zhu1090093659/dsh-web/tree/main/packages/dsh-skill-explorer#readme)（`@linxin666/dsh-client-ui-skill-explorer`），并基于 Google Antigravity 的 MCP App（SEP-1865）插件规范独立重新设计与实现。
+
 ---
 
 ## 界面与功能预览
@@ -105,3 +107,9 @@ antigravity-skill-explorer/
 ├── install.ps1                    # Windows 一键安装脚本
 └── install.sh                     # macOS / Linux 一键安装脚本
 ```
+
+## 致谢与参考声明
+
+- 本项目在分级来源目录、可视化浏览与编辑、模型调用开关及 `.trash` 安全回收站等产品思路上，参考并致敬了 [zhu1090093659/dsh-web — packages/dsh-skill-explorer](https://github.com/zhu1090093659/dsh-web/tree/main/packages/dsh-skill-explorer#readme)。
+- 本项目与上述项目相互独立，未直接复用其源码，而是面向 **Google Antigravity** 平台基于 Python MCP Server 与 `@modelcontextprotocol/ext-apps` 独立实现，并补充了对话内一键发送调用、上下文附加及外部 Skill 导入等 Antigravity 专属能力。
+
